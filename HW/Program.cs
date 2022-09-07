@@ -33,8 +33,36 @@ string GenerateString(int strLenth)
     return word;
 }
 
+//Функция формирует массив из имеющегося массива строк длина которых меньше или равна 3
+string[] CutArray(string[] arr)
+{
+    //посчиатем какое количество имеется строк в массиве которые имеют длину не больше трех
+    int count = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if(arr[i].Length <= 3)
+        {
+            count++;
+        }
+    }
+    //Сгенерируем массив из полученного подсчета
+    string[] finalArray = new string[count];
+    int k = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if(arr[i].Length <= 3)
+        {
+            finalArray[k] = arr[i];
+            k++;
+        }
+    }
+    return finalArray;
+}
+
 
 //1. Сгенерируем массив из случайной цифры от 1 до 20
 string[] array = new string[new Random().Next(1, 20)];
 FillArray(array);
 PrintArray(array);
+Console.WriteLine();
+PrintArray(CutArray(array));
